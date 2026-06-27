@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChatsSync — One shared inbox for WhatsApp & every channel</title>
+<meta name="description" content="ChatsSync brings WhatsApp and all your customer conversations into one shared inbox, with a no-code chatbot to handle the routine. Reply together, faster." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0E1726; --sub:#586A82; --faint:#8A99AD;
+    --brand:#2F6BFF; --brand-d:#1E54E6; --green:#25D366; --green-d:#16a34a;
+    --bg:#FFFFFF; --soft:#F5F8FD; --soft2:#EEF3FB; --line:#E6ECF4;
+    --shadow:0 1px 2px rgba(16,23,38,.04), 0 12px 32px rgba(16,23,38,.06);
+    --shadow-lg:0 24px 60px rgba(16,23,38,.12);
+    --radius:16px; --maxw:1120px;
+    --font:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;border-radius:11px;padding:12px 20px;cursor:pointer;border:1px solid transparent;transition:transform .12s ease, box-shadow .12s ease, background .12s ease;white-space:nowrap}
+  .btn:focus-visible{outline:3px solid rgba(47,107,255,.4);outline-offset:2px}
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 20px rgba(47,107,255,.28)}
+  .btn-primary:hover{background:var(--brand-d);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{background:var(--soft);transform:translateY(-1px)}
+  .btn-lg{padding:14px 26px;font-size:16px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--soft2);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+  .muted{color:var(--sub)}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;gap:20px;height:66px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.02em}
+  .logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),#5b8dff);display:grid;place-items:center;color:#fff;font-size:15px;box-shadow:0 4px 12px rgba(47,107,255,.35)}
+  .brand b{color:var(--brand)}
+  .nav-links{display:flex;gap:28px;margin-left:18px}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--sub)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{margin-left:auto;display:flex;align-items:center;gap:12px}
+  .nav-cta .login{font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 6px}
+  .nav-cta .login:hover{color:var(--brand)}
+  .hamb{display:none;margin-left:auto;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+  .hamb span{width:18px;height:2px;background:var(--ink);border-radius:2px}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:74px 0 60px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(900px 420px at 78% -8%, rgba(47,107,255,.10), transparent 60%),radial-gradient(700px 360px at 8% 6%, rgba(37,211,102,.07), transparent 60%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;position:relative}
+  .hero h1{font-size:clamp(34px,4.6vw,56px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:18px 0 16px}
+  .hero h1 .hl{color:var(--brand)}
+  .hero p.lead{font-size:clamp(16px,1.4vw,19px);color:var(--sub);max-width:520px;margin:0 0 28px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{margin-top:22px;display:flex;gap:18px;flex-wrap:wrap;color:var(--faint);font-size:13.5px;font-weight:500}
+  .trust span{display:inline-flex;align-items:center;gap:7px}
+  .tick{color:var(--green-d)}
+
+  /* ---------- HERO MOCKUP (signature) ---------- */
+  .mock{position:relative}
+  .mock-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
+  .mock-top{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .mock-body{display:grid;grid-template-columns:150px 1fr}
+  .mlist{border-right:1px solid var(--line);padding:8px;background:#fff}
+  .mlist .row{display:flex;align-items:center;gap:8px;padding:9px 8px;border-radius:9px}
+  .mlist .row.active{background:var(--soft2)}
+  .avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#cfe0ff,#aecbff);flex:0 0 auto;display:grid;place-items:center;font-size:11px;color:#2c4a86;font-weight:700}
+  .avatar.g{background:linear-gradient(135deg,#c8f3d8,#9fe7b9);color:#157a3c}
+  .mlist .nm{font-size:11.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mlist .pv{font-size:10px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mchat{background:linear-gradient(#f7faff,#fff);padding:14px;min-height:268px;display:flex;flex-direction:column;gap:9px}
+  .mchat .chdr{display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:4px}
+  .mchat .chdr .nm{font-size:12.5px;font-weight:700}
+  .mchat .chdr .wa{margin-left:auto;font-size:10px;font-weight:700;color:var(--green-d);background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);padding:2px 8px;border-radius:999px}
+  .bub{max-width:74%;padding:9px 12px;border-radius:13px;font-size:12.5px;line-height:1.4;box-shadow:0 1px 1px rgba(16,23,38,.05)}
+  .bub.in{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px}
+  .bub.out{align-self:flex-end;background:#dcf6e3;border-bottom-right-radius:5px}
+  .bub.bot{align-self:flex-start;background:#eef3ff;border:1px solid #d9e5ff;border-bottom-left-radius:5px}
+  .botchips{align-self:flex-start;display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-size:11px;font-weight:600;color:var(--brand);background:#fff;border:1px solid #cfe0ff;border-radius:8px;padding:5px 10px}
+  .float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:10px 13px;display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600}
+  .float .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:13px}
+  .float.bot{right:-14px;top:18px}
+  .float.bot .ic{background:rgba(47,107,255,.12);color:var(--brand)}
+  .float.assign{left:-18px;bottom:26px}
+  .float.assign .ic{background:rgba(37,211,102,.14);color:var(--green-d)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:660px;margin:0 auto 48px;text-align:center}
+  .sec-head h2{font-size:clamp(27px,3vw,40px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin:14px 0 12px}
+  .sec-head p{font-size:17px;color:var(--sub);margin:0}
+  .soft-bg{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  /* features */
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .14s ease, box-shadow .14s ease, border-color .14s}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#d7e2f0}
+  .card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:21px;margin-bottom:14px}
+  .card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin:0 0 7px}
+  .card p{font-size:14.5px;color:var(--sub);margin:0}
+  .ic-blue{background:rgba(47,107,255,.1);color:var(--brand)}
+  .ic-green{background:rgba(37,211,102,.13);color:var(--green-d)}
+  .ic-violet{background:rgba(124,93,240,.12);color:#7c5df0}
+  .ic-amber{background:rgba(200,144,43,.14);color:#b9791f}
+  .ic-rose{background:rgba(229,82,74,.12);color:#e5524a}
+  .ic-teal{background:rgba(43,159,148,.13);color:#1f8a80}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+  .step{position:relative;padding:26px 22px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+  .step .n{position:absolute;top:-16px;left:22px;width:34px;height:34px;border-radius:10px;background:var(--brand);color:#fff;font-weight:800;font-size:15px;display:grid;place-items:center;box-shadow:0 6px 16px rgba(47,107,255,.3)}
+  .step h3{font-size:17px;font-weight:700;margin:12px 0 7px}
+  .step p{font-size:14.5px;color:var(--sub);margin:0}
+
+  /* CTA band */
+  .cta-band{padding:0 0 90px}
+  .cta-inner{background:linear-gradient(135deg,#13213e,#1c3a7a 60%,#2f6bff);border-radius:24px;padding:56px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+  .cta-inner:before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% -20%, rgba(37,211,102,.25), transparent 60%);pointer-events:none}
+  .cta-inner h2{font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.02em;margin:0 0 12px;position:relative}
+  .cta-inner p{font-size:17px;color:#c7d6f5;margin:0 auto 28px;max-width:520px;position:relative}
+  .cta-inner .btn-primary{background:#fff;color:var(--brand);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .cta-inner .btn-primary:hover{background:#eef3ff}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:48px 0 40px;color:var(--sub)}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+  .foot .brand{font-size:18px}
+  .foot-tag{font-size:13.5px;color:var(--faint);max-width:280px;margin-top:10px}
+  .foot-links{display:flex;gap:48px;flex-wrap:wrap}
+  .foot-col h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:0 0 12px;font-weight:700}
+  .foot-col a{display:block;font-size:14px;color:var(--sub);margin-bottom:9px}
+  .foot-col a:hover{color:var(--brand)}
+  .foot-bottom{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--faint);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    .nav-links{display:none}
+    .nav-cta .login{display:none}
+    .hamb{display:flex}
+    .nav-cta{margin-left:0}
+    .hero{padding:48px 0 40px}
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .mock{order:2;max-width:440px;margin:0 auto}
+    .feat,.steps{grid-template-columns:1fr}
+    section{padding:60px 0}
+    .float.bot{right:6px}.float.assign{left:6px}
+    .mobile-menu.open{display:flex}
+  }
+  @media (max-width:560px){
+    .feat{grid-template-columns:1fr}
+    .cta-inner{padding:40px 22px}
+    .wrap{padding:0 18px}
+  }
+  .mobile-menu{display:none;flex-direction:column;gap:4px;padding:12px 18px 18px;border-bottom:1px solid var(--line);background:#fff}
+  .mobile-menu a{padding:11px 8px;font-weight:600;font-size:15px;border-radius:8px;color:var(--ink)}
+  .mobile-menu a:hover{background:var(--soft)}
+  .mobile-menu .btn{margin-top:8px}
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span class="logo">◆</span>Chats<b>Sync</b></a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#why">Why ChatsSync</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="login" href="https://app.chatssync.online/app/login">Log in</a>
+      <a class="btn btn-primary" href="https://app.chatssync.online/app/auth/signup">Start free</a>
+      <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#why">Why ChatsSync</a>
+    <a href="https://app.chatssync.online/app/login">Log in</a>
+    <a class="btn btn-primary" href="https://app.chatssync.online/app/auth/signup">Start free</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow">💬 WhatsApp-first support</span>
+        <h1>Customer conversations, <span class="hl">handled together.</span></h1>
+        <p class="lead">ChatsSync brings WhatsApp and all your channels into one shared inbox — with a no-code chatbot that handles the routine, so your team can focus on the conversations that matter.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a>
+          <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
+        </div>
+        <div class="trust">
+          <span><span class="tick">✓</span> Free trial, no card</span>
+          <span><span class="tick">✓</span> WhatsApp Business API</span>
+          <span><span class="tick">✓</span> Your data, your control</span>
+        </div>
+      </div>
+
+      <!-- signature: a live inbox mockup -->
+      <div class="mock reveal in">
+        <div class="mock-card">
+          <div class="mock-top"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span></div>
+          <div class="mock-body">
+            <div class="mlist">
+              <div class="row active"><div class="avatar g">AH</div><div style="min-width:0"><div class="nm">Abdullah H.</div><div class="pv">Order #1042 confirmed</div></div></div>
+              <div class="row"><div class="avatar">SK</div><div style="min-width:0"><div class="nm">Sara Khan</div><div class="pv">Do you deliver to…</div></div></div>
+              <div class="row"><div class="avatar g">MR</div><div style="min-width:0"><div class="nm">M. Rauf</div><div class="pv">Thanks! 🙌</div></div></div>
+              <div class="row"><div class="avatar">JD</div><div style="min-width:0"><div class="nm">Jhanzaib</div><div class="pv">Price list please</div></div></div>
+            </div>
+            <div class="mchat">
+              <div class="chdr"><div class="avatar g">AH</div><div class="nm">Abdullah H.</div><span class="wa">WhatsApp</span></div>
+              <div class="bub in">Hi, is the blue one in stock?</div>
+              <div class="bub bot">Yes! It's available 🎉 Want to place an order?</div>
+              <div class="botchips"><span class="chip">Place order</span><span class="chip">See sizes</span><span class="chip">Talk to agent</span></div>
+              <div class="bub out">I'll take it in medium 👍</div>
+            </div>
+          </div>
+        </div>
+        <div class="float bot"><span class="ic">🤖</span>Bot replied in 2s</div>
+        <div class="float assign"><span class="ic">👤</span>Assigned to you</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Everything in one place</span>
+        <h2>One platform for every customer chat</h2>
+        <p>Connect your channels, automate the repetitive, and let your whole team reply from a single, organized inbox.</p>
+      </div>
+      <div class="feat">
+        <div class="card reveal"><div class="ic ic-green">📱</div><h3>WhatsApp Business API</h3><p>Connect your official WhatsApp number and send rich messages, buttons, lists and approved templates at scale.</p></div>
+        <div class="card reveal"><div class="ic ic-blue">📥</div><h3>Shared team inbox</h3><p>Every conversation in one place. Assign chats, leave private notes, and never let a customer fall through the cracks.</p></div>
+        <div class="card reveal"><div class="ic ic-violet">🤖</div><h3>No-code chatbot builder</h3><p>Drag, drop and connect. Build flows that answer FAQs, qualify leads and hand off to a human when it matters.</p></div>
+        <div class="card reveal"><div class="ic ic-amber">⚡</div><h3>Automations &amp; rules</h3><p>Auto-assign, auto-reply, tag and route conversations so the right person is always on the right chat.</p></div>
+        <div class="card reveal"><div class="ic ic-teal">🗂️</div><h3>Message templates</h3><p>Create and manage WhatsApp templates and canned replies, then send approved campaigns in a couple of clicks.</p></div>
+        <div class="card reveal"><div class="ic ic-rose">📊</div><h3>Reports &amp; insights</h3><p>See response times, conversation volumes and agent performance to keep your support sharp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how" class="soft-bg">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Up and running fast</span>
+        <h2>Live in three simple steps</h2>
+        <p>No long setup. Connect, build, and start talking to your customers the same day.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="n">1</div><h3>Connect your channels</h3><p>Link your WhatsApp number and other channels to your ChatsSync inbox in minutes.</p></div>
+        <div class="step reveal"><div class="n">2</div><h3>Build your chatbot</h3><p>Use the visual builder to set up replies, menus and automations — no code needed.</p></div>
+        <div class="step reveal"><div class="n">3</div><h3>Reply together</h3><p>Your team handles conversations from one shared inbox, with the bot covering the rest.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Built for growing teams</span>
+        <h2>Support that scales with you</h2>
+        <p>From a solo founder to a full support team — ChatsSync keeps every conversation organized and on-brand.</p>
+      </div>
+      <div class="feat">
+        <div class="card reveal"><div class="ic ic-blue">🔒</div><h3>Your data, your control</h3><p>Self-hosted and private. Customer conversations stay with you — not scattered across personal phones.</p></div>
+        <div class="card reveal"><div class="ic ic-green">👥</div><h3>Real team collaboration</h3><p>Assign owners, mention teammates and add private notes so handoffs are smooth and nothing repeats.</p></div>
+        <div class="card reveal"><div class="ic ic-violet">🎨</div><h3>Make it yours</h3><p>A clean, modern workspace your whole team will actually enjoy using every day.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <h2>Talk to your customers where they already are.</h2>
+        <p>Bring WhatsApp and every channel into one inbox today. It only takes a few minutes to get started.</p>
+        <a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><span class="logo">◆</span>Chats<b>Sync</b></a>
+        <div class="foot-tag">One shared inbox for WhatsApp and every channel, with a no-code chatbot to handle the routine.</div>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#why">Why ChatsSync</a>
+        </div>
+        <div class="foot-col">
+          <h4>Get started</h4>
+          <a href="https://app.chatssync.online/app/auth/signup">Create account</a>
+          <a href="https://app.chatssync.online/app/login">Log in</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> ChatsSync. All rights reserved.</span>
+      <span>Talk to customers, together.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // mobile menu
+  var hamb = document.getElementById('hamb'), menu = document.getElementById('mobileMenu');
+  hamb.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); hamb.setAttribute('aria-expanded','false'); }); });
+  // reveal on scroll
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold:.12 });
+    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
