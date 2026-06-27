@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ChatsSync — One shared inbox for WhatsApp & every channel</title>
 <meta name="description" content="ChatsSync brings WhatsApp and all your customer conversations into one shared inbox, with a no-code chatbot to handle the routine. Reply together, faster." />
+<meta name="theme-color" content="#2F6BFF" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F6BFF'/%3E%3Cpath d='M16 6.4 L25.6 16 L16 25.6 L6.4 16 Z' fill='white'/%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F6BFF'/%3E%3Cpath d='M16 6.4 L25.6 16 L16 25.6 L6.4 16 Z' fill='white'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ChatsSync" />
+<meta property="og:title" content="ChatsSync — One shared inbox for WhatsApp & every channel" />
+<meta property="og:description" content="Bring WhatsApp and every channel into one shared inbox, with a no-code chatbot to handle the routine." />
+<meta property="og:url" content="https://chatssync.online" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -15,15 +23,16 @@
     --bg:#FFFFFF; --soft:#F5F8FD; --soft2:#EEF3FB; --line:#E6ECF4;
     --shadow:0 1px 2px rgba(16,23,38,.04), 0 12px 32px rgba(16,23,38,.06);
     --shadow-lg:0 24px 60px rgba(16,23,38,.12);
-    --radius:16px; --maxw:1120px;
+    --radius:16px; --maxw:1200px;
     --font:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   }
   *{box-sizing:border-box}
+  html,body{overflow-x:hidden;width:100%}
   html{scroll-behavior:smooth}
   body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;border-radius:11px;padding:12px 20px;cursor:pointer;border:1px solid transparent;transition:transform .12s ease, box-shadow .12s ease, background .12s ease;white-space:nowrap}
   .btn:focus-visible{outline:3px solid rgba(47,107,255,.4);outline-offset:2px}
   .btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 20px rgba(47,107,255,.28)}
@@ -34,22 +43,37 @@
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--soft2);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
   .muted{color:var(--sub)}
 
-  /* ---------- NAV ---------- */
+  /* NAV */
   header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;gap:20px;height:66px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.02em}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.02em;cursor:pointer}
   .logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),#5b8dff);display:grid;place-items:center;color:#fff;font-size:15px;box-shadow:0 4px 12px rgba(47,107,255,.35)}
   .brand b{color:var(--brand)}
-  .nav-links{display:flex;gap:28px;margin-left:18px}
-  .nav-links a{font-size:14.5px;font-weight:500;color:var(--sub)}
-  .nav-links a:hover{color:var(--ink)}
+  .nav-links{display:flex;gap:26px;margin-left:18px}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--sub);cursor:pointer}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
   .nav-cta{margin-left:auto;display:flex;align-items:center;gap:12px}
   .nav-cta .login{font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 6px}
   .nav-cta .login:hover{color:var(--brand)}
-  .hamb{display:none;margin-left:auto;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+  .hamb{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px}
   .hamb span{width:18px;height:2px;background:var(--ink);border-radius:2px}
+  .mobile-menu{display:none;flex-direction:column;gap:4px;padding:12px 18px 18px;border-bottom:1px solid var(--line);background:#fff}
+  .mobile-menu a{padding:11px 8px;font-weight:600;font-size:15px;border-radius:8px;color:var(--ink);cursor:pointer}
+  .mobile-menu a:hover{background:var(--soft)}
+  .mobile-menu .btn{margin-top:8px}
+  .mobile-menu.open{display:flex}
 
-  /* ---------- HERO ---------- */
+  /* PAGES */
+  .page{display:none}
+  .page.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  section{padding:84px 0}
+  .sec-head{max-width:680px;margin:0 auto 48px;text-align:center}
+  .sec-head h2{font-size:clamp(27px,3vw,40px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin:14px 0 12px}
+  .sec-head p{font-size:17px;color:var(--sub);margin:0}
+  .soft-bg{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  /* HERO */
   .hero{padding:74px 0 60px;position:relative;overflow:hidden}
   .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(900px 420px at 78% -8%, rgba(47,107,255,.10), transparent 60%),radial-gradient(700px 360px at 8% 6%, rgba(37,211,102,.07), transparent 60%);pointer-events:none}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;position:relative}
@@ -61,7 +85,7 @@
   .trust span{display:inline-flex;align-items:center;gap:7px}
   .tick{color:var(--green-d)}
 
-  /* ---------- HERO MOCKUP (signature) ---------- */
+  /* HERO MOCKUP */
   .mock{position:relative}
   .mock-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
   .mock-top{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
@@ -86,19 +110,12 @@
   .chip{font-size:11px;font-weight:600;color:var(--brand);background:#fff;border:1px solid #cfe0ff;border-radius:8px;padding:5px 10px}
   .float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:10px 13px;display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600}
   .float .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:13px}
-  .float.bot{right:-14px;top:18px}
+  .float.bot{right:-10px;top:18px}
   .float.bot .ic{background:rgba(47,107,255,.12);color:var(--brand)}
-  .float.assign{left:-18px;bottom:26px}
+  .float.assign{left:-10px;bottom:26px}
   .float.assign .ic{background:rgba(37,211,102,.14);color:var(--green-d)}
 
-  /* ---------- SECTIONS ---------- */
-  section{padding:84px 0}
-  .sec-head{max-width:660px;margin:0 auto 48px;text-align:center}
-  .sec-head h2{font-size:clamp(27px,3vw,40px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin:14px 0 12px}
-  .sec-head p{font-size:17px;color:var(--sub);margin:0}
-  .soft-bg{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-
-  /* features */
+  /* FEATURE GRID */
   .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .14s ease, box-shadow .14s ease, border-color .14s}
   .card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#d7e2f0}
@@ -112,14 +129,55 @@
   .ic-rose{background:rgba(229,82,74,.12);color:#e5524a}
   .ic-teal{background:rgba(43,159,148,.13);color:#1f8a80}
 
-  /* steps */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .step{position:relative;padding:26px 22px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
   .step .n{position:absolute;top:-16px;left:22px;width:34px;height:34px;border-radius:10px;background:var(--brand);color:#fff;font-weight:800;font-size:15px;display:grid;place-items:center;box-shadow:0 6px 16px rgba(47,107,255,.3)}
   .step h3{font-size:17px;font-weight:700;margin:12px 0 7px}
   .step p{font-size:14.5px;color:var(--sub);margin:0}
 
-  /* CTA band */
+  /* FEATURE ROWS (features page) */
+  .frow{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:28px 0;border-top:1px solid var(--line);align-items:start}
+  .frow:first-child{border-top:0}
+  .frow .ic{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-size:26px}
+  .frow h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:2px 0 8px}
+  .frow p{font-size:15.5px;color:var(--sub);margin:0 0 12px;max-width:760px}
+  .frow ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px}
+  .frow li{font-size:14px;color:var(--ink);font-weight:500;display:flex;align-items:center;gap:8px}
+  .frow li:before{content:"✓";color:var(--green-d);font-weight:800}
+
+  /* FAQ */
+  .faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .qa{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .qa h4{margin:0 0 8px;font-size:16.5px;font-weight:700}
+  .qa p{margin:0;font-size:15px;color:var(--sub)}
+
+  /* LEGAL */
+  .legal{max-width:820px;margin:0 auto}
+  .legal .updated{font-size:13.5px;color:var(--faint);margin-bottom:30px}
+  .legal h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin:30px 0 10px}
+  .legal p,.legal li{font-size:15.5px;color:var(--sub);line-height:1.65}
+  .legal ul{padding-left:20px;margin:8px 0}
+  .legal li{margin-bottom:6px}
+  .lead-legal{font-size:16.5px;color:var(--ink)}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:920px;margin:0 auto;align-items:start}
+  .contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .contact-card h3{margin:0 0 6px;font-size:18px;font-weight:700}
+  .contact-card p{margin:0 0 16px;font-size:15px;color:var(--sub)}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+  .field input,.field textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:14.5px;font-family:var(--font);background:var(--soft);color:var(--ink)}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--brand);background:#fff;box-shadow:0 0 0 3px rgba(47,107,255,.14)}
+  .info-item{display:flex;gap:13px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line)}
+  .info-item:first-child{border-top:0;padding-top:0}
+  .info-item .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:19px;flex:0 0 auto}
+  .info-item h4{margin:0 0 3px;font-size:15px;font-weight:700}
+  .info-item p{margin:0;font-size:14px;color:var(--sub)}
+  .info-item a{color:var(--brand);font-weight:600}
+
+  /* CTA BAND */
   .cta-band{padding:0 0 90px}
   .cta-inner{background:linear-gradient(135deg,#13213e,#1c3a7a 60%,#2f6bff);border-radius:24px;padding:56px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
   .cta-inner:before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% -20%, rgba(37,211,102,.25), transparent 60%);pointer-events:none}
@@ -128,55 +186,52 @@
   .cta-inner .btn-primary{background:#fff;color:var(--brand);box-shadow:0 10px 30px rgba(0,0,0,.25)}
   .cta-inner .btn-primary:hover{background:#eef3ff}
 
-  /* footer */
+  /* PAGE HEADER (inner pages) */
+  .page-hero{padding:64px 0 10px;text-align:center;position:relative;overflow:hidden}
+  .page-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 50% -30%, rgba(47,107,255,.10), transparent 60%);pointer-events:none}
+  .page-hero h1{font-size:clamp(30px,3.6vw,46px);font-weight:800;letter-spacing:-.025em;margin:16px 0 12px;position:relative}
+  .page-hero p{font-size:18px;color:var(--sub);max-width:600px;margin:0 auto;position:relative}
+
+  /* FOOTER */
   footer{border-top:1px solid var(--line);padding:48px 0 40px;color:var(--sub)}
   .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
   .foot .brand{font-size:18px}
   .foot-tag{font-size:13.5px;color:var(--faint);max-width:280px;margin-top:10px}
   .foot-links{display:flex;gap:48px;flex-wrap:wrap}
   .foot-col h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:0 0 12px;font-weight:700}
-  .foot-col a{display:block;font-size:14px;color:var(--sub);margin-bottom:9px}
+  .foot-col a{display:block;font-size:14px;color:var(--sub);margin-bottom:9px;cursor:pointer}
   .foot-col a:hover{color:var(--brand)}
   .foot-bottom{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--faint);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- RESPONSIVE ---------- */
   @media (max-width:880px){
     .nav-links{display:none}
     .nav-cta .login{display:none}
     .hamb{display:flex}
-    .nav-cta{margin-left:0}
     .hero{padding:48px 0 40px}
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .mock{order:2;max-width:440px;margin:0 auto}
-    .feat,.steps{grid-template-columns:1fr}
-    section{padding:60px 0}
-    .float.bot{right:6px}.float.assign{left:6px}
-    .mobile-menu.open{display:flex}
+    .feat,.steps,.contact-grid{grid-template-columns:1fr}
+    section{padding:58px 0}
+    .frow{grid-template-columns:1fr;gap:12px}
+    .frow .ic{margin-bottom:2px}
   }
-  @media (max-width:560px){
-    .feat{grid-template-columns:1fr}
-    .cta-inner{padding:40px 22px}
-    .wrap{padding:0 18px}
-  }
-  .mobile-menu{display:none;flex-direction:column;gap:4px;padding:12px 18px 18px;border-bottom:1px solid var(--line);background:#fff}
-  .mobile-menu a{padding:11px 8px;font-weight:600;font-size:15px;border-radius:8px;color:var(--ink)}
-  .mobile-menu a:hover{background:var(--soft)}
-  .mobile-menu .btn{margin-top:8px}
-  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}}
+  @media (max-width:560px){ .wrap{padding:0 18px} .cta-inner{padding:40px 22px} }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}.page.active{animation:none}}
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top"><span class="logo">◆</span>Chats<b>Sync</b></a>
+    <div class="brand" data-route="home"><span class="logo">◆</span>Chats<b>Sync</b></div>
     <nav class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="#why">Why ChatsSync</a>
+      <a data-route="features">Features</a>
+      <a data-route="how">How it works</a>
+      <a data-route="why">Why ChatsSync</a>
+      <a data-route="contact">Contact</a>
     </nav>
     <div class="nav-cta">
       <a class="login" href="https://app.chatssync.online/app/login">Log in</a>
@@ -185,141 +240,270 @@
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#features">Features</a>
-    <a href="#how">How it works</a>
-    <a href="#why">Why ChatsSync</a>
+    <a data-route="features">Features</a>
+    <a data-route="how">How it works</a>
+    <a data-route="why">Why ChatsSync</a>
+    <a data-route="contact">Contact</a>
     <a href="https://app.chatssync.online/app/login">Log in</a>
     <a class="btn btn-primary" href="https://app.chatssync.online/app/auth/signup">Start free</a>
   </div>
 </header>
 
-<main id="top">
+<main>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="reveal in">
-        <span class="eyebrow">💬 WhatsApp-first support</span>
-        <h1>Customer conversations, <span class="hl">handled together.</span></h1>
-        <p class="lead">ChatsSync brings WhatsApp and all your channels into one shared inbox — with a no-code chatbot that handles the routine, so your team can focus on the conversations that matter.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a>
-          <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
-        </div>
-        <div class="trust">
-          <span><span class="tick">✓</span> Free trial, no card</span>
-          <span><span class="tick">✓</span> WhatsApp Business API</span>
-          <span><span class="tick">✓</span> Your data, your control</span>
-        </div>
-      </div>
-
-      <!-- signature: a live inbox mockup -->
-      <div class="mock reveal in">
-        <div class="mock-card">
-          <div class="mock-top"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span></div>
-          <div class="mock-body">
-            <div class="mlist">
-              <div class="row active"><div class="avatar g">AH</div><div style="min-width:0"><div class="nm">Abdullah H.</div><div class="pv">Order #1042 confirmed</div></div></div>
-              <div class="row"><div class="avatar">SK</div><div style="min-width:0"><div class="nm">Sara Khan</div><div class="pv">Do you deliver to…</div></div></div>
-              <div class="row"><div class="avatar g">MR</div><div style="min-width:0"><div class="nm">M. Rauf</div><div class="pv">Thanks! 🙌</div></div></div>
-              <div class="row"><div class="avatar">JD</div><div style="min-width:0"><div class="nm">Jhanzaib</div><div class="pv">Price list please</div></div></div>
-            </div>
-            <div class="mchat">
-              <div class="chdr"><div class="avatar g">AH</div><div class="nm">Abdullah H.</div><span class="wa">WhatsApp</span></div>
-              <div class="bub in">Hi, is the blue one in stock?</div>
-              <div class="bub bot">Yes! It's available 🎉 Want to place an order?</div>
-              <div class="botchips"><span class="chip">Place order</span><span class="chip">See sizes</span><span class="chip">Talk to agent</span></div>
-              <div class="bub out">I'll take it in medium 👍</div>
-            </div>
+  <!-- ================= HOME ================= -->
+  <div class="page active" id="page-home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal in">
+          <span class="eyebrow">💬 WhatsApp-first support</span>
+          <h1>Customer conversations, <span class="hl">handled together.</span></h1>
+          <p class="lead">ChatsSync brings WhatsApp and all your channels into one shared inbox — with a no-code chatbot that handles the routine, so your team can focus on the conversations that matter.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a>
+            <a class="btn btn-ghost btn-lg" data-route="how">See how it works</a>
+          </div>
+          <div class="trust">
+            <span><span class="tick">✓</span> Free trial, no card</span>
+            <span><span class="tick">✓</span> WhatsApp Business API</span>
+            <span><span class="tick">✓</span> Your data, your control</span>
           </div>
         </div>
-        <div class="float bot"><span class="ic">🤖</span>Bot replied in 2s</div>
-        <div class="float assign"><span class="ic">👤</span>Assigned to you</div>
+        <div class="mock reveal in">
+          <div class="mock-card">
+            <div class="mock-top"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span></div>
+            <div class="mock-body">
+              <div class="mlist">
+                <div class="row active"><div class="avatar g">AH</div><div style="min-width:0"><div class="nm">Abdullah H.</div><div class="pv">Order #1042 confirmed</div></div></div>
+                <div class="row"><div class="avatar">SK</div><div style="min-width:0"><div class="nm">Sara Khan</div><div class="pv">Do you deliver to…</div></div></div>
+                <div class="row"><div class="avatar g">MR</div><div style="min-width:0"><div class="nm">M. Rauf</div><div class="pv">Thanks! 🙌</div></div></div>
+                <div class="row"><div class="avatar">JD</div><div style="min-width:0"><div class="nm">Jhanzaib</div><div class="pv">Price list please</div></div></div>
+              </div>
+              <div class="mchat">
+                <div class="chdr"><div class="avatar g">AH</div><div class="nm">Abdullah H.</div><span class="wa">WhatsApp</span></div>
+                <div class="bub in">Hi, is the blue one in stock?</div>
+                <div class="bub bot">Yes! It's available 🎉 Want to place an order?</div>
+                <div class="botchips"><span class="chip">Place order</span><span class="chip">See sizes</span><span class="chip">Talk to agent</span></div>
+                <div class="bub out">I'll take it in medium 👍</div>
+              </div>
+            </div>
+          </div>
+          <div class="float bot"><span class="ic">🤖</span>Bot replied in 2s</div>
+          <div class="float assign"><span class="ic">👤</span>Assigned to you</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Everything in one place</span>
-        <h2>One platform for every customer chat</h2>
-        <p>Connect your channels, automate the repetitive, and let your whole team reply from a single, organized inbox.</p>
+    <section>
+      <div class="wrap">
+        <div class="sec-head reveal in">
+          <span class="eyebrow">Everything in one place</span>
+          <h2>One platform for every customer chat</h2>
+          <p>Connect your channels, automate the repetitive, and let your whole team reply from a single, organized inbox.</p>
+        </div>
+        <div class="feat">
+          <div class="card reveal in"><div class="ic ic-green">📱</div><h3>WhatsApp Business API</h3><p>Connect your official WhatsApp number and send rich messages, buttons, lists and approved templates at scale.</p></div>
+          <div class="card reveal in"><div class="ic ic-blue">📥</div><h3>Shared team inbox</h3><p>Every conversation in one place. Assign chats, leave private notes, and never let a customer fall through the cracks.</p></div>
+          <div class="card reveal in"><div class="ic ic-violet">🤖</div><h3>No-code chatbot builder</h3><p>Drag, drop and connect. Build flows that answer FAQs, qualify leads and hand off to a human when it matters.</p></div>
+          <div class="card reveal in"><div class="ic ic-amber">⚡</div><h3>Automations &amp; rules</h3><p>Auto-assign, auto-reply, tag and route conversations so the right person is always on the right chat.</p></div>
+          <div class="card reveal in"><div class="ic ic-teal">🗂️</div><h3>Message templates</h3><p>Create and manage WhatsApp templates and canned replies, then send approved campaigns in a couple of clicks.</p></div>
+          <div class="card reveal in"><div class="ic ic-rose">📊</div><h3>Reports &amp; insights</h3><p>See response times, conversation volumes and agent performance to keep your support sharp.</p></div>
+        </div>
+        <div style="text-align:center;margin-top:34px"><a class="btn btn-ghost btn-lg" data-route="features">Explore all features →</a></div>
       </div>
-      <div class="feat">
-        <div class="card reveal"><div class="ic ic-green">📱</div><h3>WhatsApp Business API</h3><p>Connect your official WhatsApp number and send rich messages, buttons, lists and approved templates at scale.</p></div>
-        <div class="card reveal"><div class="ic ic-blue">📥</div><h3>Shared team inbox</h3><p>Every conversation in one place. Assign chats, leave private notes, and never let a customer fall through the cracks.</p></div>
-        <div class="card reveal"><div class="ic ic-violet">🤖</div><h3>No-code chatbot builder</h3><p>Drag, drop and connect. Build flows that answer FAQs, qualify leads and hand off to a human when it matters.</p></div>
-        <div class="card reveal"><div class="ic ic-amber">⚡</div><h3>Automations &amp; rules</h3><p>Auto-assign, auto-reply, tag and route conversations so the right person is always on the right chat.</p></div>
-        <div class="card reveal"><div class="ic ic-teal">🗂️</div><h3>Message templates</h3><p>Create and manage WhatsApp templates and canned replies, then send approved campaigns in a couple of clicks.</p></div>
-        <div class="card reveal"><div class="ic ic-rose">📊</div><h3>Reports &amp; insights</h3><p>See response times, conversation volumes and agent performance to keep your support sharp.</p></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- HOW -->
-  <section id="how" class="soft-bg">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Up and running fast</span>
-        <h2>Live in three simple steps</h2>
-        <p>No long setup. Connect, build, and start talking to your customers the same day.</p>
+    <section class="soft-bg">
+      <div class="wrap">
+        <div class="sec-head reveal in">
+          <span class="eyebrow">Up and running fast</span>
+          <h2>Live in three simple steps</h2>
+          <p>No long setup. Connect, build, and start talking to your customers the same day.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal in"><div class="n">1</div><h3>Connect your channels</h3><p>Link your WhatsApp number and other channels to your ChatsSync inbox in minutes.</p></div>
+          <div class="step reveal in"><div class="n">2</div><h3>Build your chatbot</h3><p>Use the visual builder to set up replies, menus and automations — no code needed.</p></div>
+          <div class="step reveal in"><div class="n">3</div><h3>Reply together</h3><p>Your team handles conversations from one shared inbox, with the bot covering the rest.</p></div>
+        </div>
       </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-inner reveal in">
+          <h2>Talk to your customers where they already are.</h2>
+          <p>Bring WhatsApp and every channel into one inbox today. It only takes a few minutes to get started.</p>
+          <a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= FEATURES ================= -->
+  <div class="page" id="page-features">
+    <section class="page-hero">
+      <div class="wrap"><span class="eyebrow">Features</span><h1>Everything you need to support customers</h1><p>From WhatsApp to chatbots to team collaboration — ChatsSync gives you one clean place to handle every conversation.</p></div>
+    </section>
+    <section style="padding-top:40px">
+      <div class="wrap">
+        <div class="frow reveal"><div class="ic ic-green">📱</div><div><h3>WhatsApp Business API</h3><p>Run your official WhatsApp number through ChatsSync and reach customers on the app they use every day — at business scale, without juggling phones.</p><ul><li>Buttons, lists &amp; quick replies</li><li>Approved message templates</li><li>Media, documents &amp; location</li><li>Multiple numbers supported</li></ul></div></div>
+        <div class="frow reveal"><div class="ic ic-blue">📥</div><div><h3>Shared team inbox</h3><p>All your conversations land in one organized inbox. Assign owners, filter by status, and keep everyone on the same page so nothing slips through.</p><ul><li>Assign &amp; reassign conversations</li><li>Private notes for your team</li><li>Open / pending / resolved states</li><li>Search across every chat</li></ul></div></div>
+        <div class="frow reveal"><div class="ic ic-violet">🤖</div><div><h3>No-code chatbot builder</h3><p>Build powerful flows visually — drag nodes, connect them, and your bot answers FAQs, collects details and routes people to the right place, day or night.</p><ul><li>Drag-and-drop flow editor</li><li>Menus, conditions &amp; forms</li><li>Auto hand-off to a human</li><li>Works while you sleep</li></ul></div></div>
+        <div class="frow reveal"><div class="ic ic-amber">⚡</div><div><h3>Automations &amp; rules</h3><p>Let the system do the busywork. Set rules to auto-assign, auto-reply, tag and prioritize conversations the moment they arrive.</p><ul><li>Auto-assignment</li><li>Keyword &amp; status triggers</li><li>Smart tagging &amp; labels</li><li>Faster first response</li></ul></div></div>
+        <div class="frow reveal"><div class="ic ic-teal">🗂️</div><div><h3>Templates &amp; campaigns</h3><p>Create, manage and submit WhatsApp templates, then send approved messages to the right people in just a few clicks.</p><ul><li>Visual template builder</li><li>Approval status at a glance</li><li>Canned replies for agents</li><li>Send to segments</li></ul></div></div>
+        <div class="frow reveal"><div class="ic ic-rose">📊</div><div><h3>Reports &amp; insights</h3><p>Understand how your support is doing. Track volumes, response times and agent activity so you can keep improving.</p><ul><li>Conversation volume</li><li>Response &amp; resolution times</li><li>Agent performance</li><li>Exportable data</li></ul></div></div>
+      </div>
+    </section>
+    <section class="cta-band"><div class="wrap"><div class="cta-inner reveal"><h2>See it in action.</h2><p>Start your free trial and connect your first channel in minutes.</p><a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a></div></div></section>
+  </div>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <div class="page" id="page-how">
+    <section class="page-hero"><div class="wrap"><span class="eyebrow">How it works</span><h1>From setup to first reply, fast</h1><p>ChatsSync is designed to get you talking to customers the same day — no technical team required.</p></div></section>
+    <section style="padding-top:46px"><div class="wrap">
       <div class="steps">
-        <div class="step reveal"><div class="n">1</div><h3>Connect your channels</h3><p>Link your WhatsApp number and other channels to your ChatsSync inbox in minutes.</p></div>
-        <div class="step reveal"><div class="n">2</div><h3>Build your chatbot</h3><p>Use the visual builder to set up replies, menus and automations — no code needed.</p></div>
-        <div class="step reveal"><div class="n">3</div><h3>Reply together</h3><p>Your team handles conversations from one shared inbox, with the bot covering the rest.</p></div>
+        <div class="step reveal"><div class="n">1</div><h3>Connect your channels</h3><p>Add your WhatsApp Business number (and any other channels) to your ChatsSync inbox. Everything starts flowing into one place.</p></div>
+        <div class="step reveal"><div class="n">2</div><h3>Build your chatbot</h3><p>Open the visual builder and design your flow — greetings, menus, FAQs and forms. Connect the steps and publish. No code at all.</p></div>
+        <div class="step reveal"><div class="n">3</div><h3>Reply together</h3><p>Your team picks up conversations from the shared inbox, assigns owners and adds notes. The bot handles the routine the rest of the time.</p></div>
       </div>
-    </div>
-  </section>
+    </div></section>
+    <section class="soft-bg"><div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Good to know</span><h2>Common questions</h2></div>
+      <div class="faq">
+        <div class="qa reveal"><h4>Do I need a developer to set it up?</h4><p>No. Connecting channels and building chatbots is done visually inside ChatsSync — no coding needed. If you can fill a form, you can build a bot.</p></div>
+        <div class="qa reveal"><h4>Can my whole team use it together?</h4><p>Yes. ChatsSync is built for teams — multiple agents share one inbox, assign conversations to each other and collaborate with private notes.</p></div>
+        <div class="qa reveal"><h4>Does the chatbot replace my agents?</h4><p>It supports them. The bot handles repetitive questions and qualifies people, then hands the conversation to a human whenever it's needed.</p></div>
+        <div class="qa reveal"><h4>Which channels are supported?</h4><p>WhatsApp is front and center, and ChatsSync brings your other customer channels into the same shared inbox so nothing is scattered.</p></div>
+        <div class="qa reveal"><h4>Is there a free trial?</h4><p>Yes — you can create an account and start using ChatsSync free, no card required. Reach out any time if you need a hand.</p></div>
+      </div>
+    </div></section>
+    <section class="cta-band"><div class="wrap"><div class="cta-inner reveal"><h2>Ready in minutes.</h2><p>Create your account and connect your first channel today.</p><a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a></div></div></section>
+  </div>
 
-  <!-- WHY -->
-  <section id="why">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Built for growing teams</span>
-        <h2>Support that scales with you</h2>
-        <p>From a solo founder to a full support team — ChatsSync keeps every conversation organized and on-brand.</p>
-      </div>
+  <!-- ================= WHY ================= -->
+  <div class="page" id="page-why">
+    <section class="page-hero"><div class="wrap"><span class="eyebrow">Why ChatsSync</span><h1>Support that scales with you</h1><p>From a solo founder to a full support team, ChatsSync keeps every conversation organized, on-brand and under your control.</p></div></section>
+    <section style="padding-top:46px"><div class="wrap">
       <div class="feat">
-        <div class="card reveal"><div class="ic ic-blue">🔒</div><h3>Your data, your control</h3><p>Self-hosted and private. Customer conversations stay with you — not scattered across personal phones.</p></div>
-        <div class="card reveal"><div class="ic ic-green">👥</div><h3>Real team collaboration</h3><p>Assign owners, mention teammates and add private notes so handoffs are smooth and nothing repeats.</p></div>
-        <div class="card reveal"><div class="ic ic-violet">🎨</div><h3>Make it yours</h3><p>A clean, modern workspace your whole team will actually enjoy using every day.</p></div>
+        <div class="card reveal"><div class="ic ic-blue">🔒</div><h3>Your data, your control</h3><p>Conversations stay in your own workspace — not scattered across personal phones and chat apps. You stay in charge of your customer data.</p></div>
+        <div class="card reveal"><div class="ic ic-green">👥</div><h3>Real team collaboration</h3><p>Assign owners, mention teammates and add private notes so handoffs are smooth and customers never have to repeat themselves.</p></div>
+        <div class="card reveal"><div class="ic ic-violet">🎨</div><h3>Clean &amp; modern</h3><p>A fast, tidy workspace your whole team will actually enjoy using every day — on desktop and mobile.</p></div>
+        <div class="card reveal"><div class="ic ic-amber">⚡</div><h3>Faster responses</h3><p>Automations and chatbots cut down the busywork, so customers get answers quickly and your team isn't drowning in repetitive questions.</p></div>
+        <div class="card reveal"><div class="ic ic-teal">🌱</div><h3>Grows with your business</h3><p>Start small and add agents, numbers and automations as you grow. ChatsSync keeps up without getting in your way.</p></div>
+        <div class="card reveal"><div class="ic ic-rose">💬</div><h3>Meet customers on WhatsApp</h3><p>Talk to people where they already are. Higher open rates, friendlier conversations and happier customers.</p></div>
       </div>
-    </div>
-  </section>
+    </div></section>
+    <section class="cta-band"><div class="wrap"><div class="cta-inner reveal"><h2>Join businesses going WhatsApp-first.</h2><p>It only takes a few minutes to get started — and it's free to try.</p><a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a></div></div></section>
+  </div>
 
-  <!-- CTA -->
-  <section class="cta-band">
-    <div class="wrap">
-      <div class="cta-inner reveal">
-        <h2>Talk to your customers where they already are.</h2>
-        <p>Bring WhatsApp and every channel into one inbox today. It only takes a few minutes to get started.</p>
-        <a class="btn btn-primary btn-lg" href="https://app.chatssync.online/app/auth/signup">Start free →</a>
+  <!-- ================= PRIVACY ================= -->
+  <div class="page" id="page-privacy">
+    <section class="page-hero"><div class="wrap"><span class="eyebrow">Legal</span><h1>Privacy Policy</h1></div></section>
+    <section style="padding-top:34px"><div class="wrap"><div class="legal">
+      <div class="updated">Last updated: June 2026</div>
+      <p class="lead-legal">ChatsSync ("ChatsSync", "we", "us") respects your privacy. This policy explains what information we collect when you use our platform, how we use it, and the choices you have.</p>
+      <h3>1. Information we collect</h3>
+      <p>We collect information needed to provide the service, including:</p>
+      <ul>
+        <li><b>Account information</b> — such as your name, email address and password when you create an account.</li>
+        <li><b>Conversation data</b> — messages and contact details you send and receive through the platform on your behalf and that of your customers.</li>
+        <li><b>Usage data</b> — basic log and device information that helps us keep the service running, secure and reliable.</li>
+        <li><b>Cookies</b> — small files used to keep you signed in and remember your preferences.</li>
+      </ul>
+      <h3>2. How we use information</h3>
+      <p>We use the information we collect to operate, maintain and improve ChatsSync, to provide customer support, to keep the platform secure, and to communicate important updates with you.</p>
+      <h3>3. Sharing &amp; third-party services</h3>
+      <p>To deliver messages and run the service, ChatsSync works with trusted third-party providers, such as messaging platforms (including WhatsApp / Meta) and email delivery services. These providers only receive the information needed to perform their function. We do not sell your personal data.</p>
+      <h3>4. Data storage &amp; security</h3>
+      <p>Your data is stored on secured servers and we apply reasonable technical and organizational measures to protect it. No method of transmission or storage is completely secure, but we work to safeguard your information.</p>
+      <h3>5. Data retention</h3>
+      <p>We retain your information for as long as your account is active or as needed to provide the service. You may request deletion of your account and associated data at any time.</p>
+      <h3>6. Your rights</h3>
+      <p>You may request to access, correct or delete your personal information by contacting us. We will respond to reasonable requests in line with applicable law.</p>
+      <h3>7. Children</h3>
+      <p>ChatsSync is intended for businesses and is not directed at children under 16. We do not knowingly collect personal information from children.</p>
+      <h3>8. Changes to this policy</h3>
+      <p>We may update this policy from time to time. When we do, we will revise the "last updated" date above. Continued use of the service after changes means you accept the updated policy.</p>
+      <h3>9. Contact us</h3>
+      <p>If you have any questions about this policy, contact us at <a href="mailto:support@chatssync.online" style="color:var(--brand);font-weight:600">support@chatssync.online</a>.</p>
+    </div></div></section>
+  </div>
+
+  <!-- ================= TERMS ================= -->
+  <div class="page" id="page-terms">
+    <section class="page-hero"><div class="wrap"><span class="eyebrow">Legal</span><h1>Terms of Service</h1></div></section>
+    <section style="padding-top:34px"><div class="wrap"><div class="legal">
+      <div class="updated">Last updated: June 2026</div>
+      <p class="lead-legal">These Terms govern your use of ChatsSync. By creating an account or using the service, you agree to these Terms.</p>
+      <h3>1. The service</h3>
+      <p>ChatsSync provides a customer communication platform, including a shared inbox, messaging integrations and a chatbot builder. We may add, change or remove features over time to improve the service.</p>
+      <h3>2. Your account</h3>
+      <p>You are responsible for your account, for keeping your login credentials secure, and for all activity that happens under your account. Please provide accurate information when signing up.</p>
+      <h3>3. Acceptable use</h3>
+      <p>You agree not to use ChatsSync to send spam or unlawful content, to harass or harm others, or to violate the rules of any connected platform (including WhatsApp / Meta messaging policies). You are responsible for obtaining the consents required to message your contacts.</p>
+      <h3>4. Third-party platforms</h3>
+      <p>ChatsSync connects with third-party services such as WhatsApp. Your use of those services is also subject to their own terms and policies, and we are not responsible for their availability or actions.</p>
+      <h3>5. Availability</h3>
+      <p>We work to keep ChatsSync available and reliable, but the service is provided "as is" without warranties of any kind. We do not guarantee uninterrupted or error-free operation.</p>
+      <h3>6. Limitation of liability</h3>
+      <p>To the maximum extent permitted by law, ChatsSync is not liable for any indirect, incidental or consequential damages arising from your use of, or inability to use, the service.</p>
+      <h3>7. Termination</h3>
+      <p>You may stop using ChatsSync at any time. We may suspend or terminate access if these Terms are violated or if required to protect the service or other users.</p>
+      <h3>8. Changes to these Terms</h3>
+      <p>We may update these Terms from time to time. We will revise the "last updated" date above, and continued use means you accept the updated Terms.</p>
+      <h3>9. Contact</h3>
+      <p>Questions about these Terms? Email us at <a href="mailto:support@chatssync.online" style="color:var(--brand);font-weight:600">support@chatssync.online</a>.</p>
+    </div></div></section>
+  </div>
+
+  <!-- ================= CONTACT ================= -->
+  <div class="page" id="page-contact">
+    <section class="page-hero"><div class="wrap"><span class="eyebrow">Contact</span><h1>Get in touch</h1><p>Questions, demos or support — we're happy to help. Reach out and we'll get back to you.</p></div></section>
+    <section style="padding-top:40px"><div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <h3>Send us a message</h3>
+          <p>Fill this in and your email app will open with the details ready to send.</p>
+          <div class="field"><label for="cname">Your name</label><input id="cname" type="text" placeholder="Jane Doe" /></div>
+          <div class="field"><label for="cemail">Email</label><input id="cemail" type="email" placeholder="you@company.com" /></div>
+          <div class="field"><label for="cmsg">Message</label><textarea id="cmsg" rows="4" placeholder="How can we help?"></textarea></div>
+          <button class="btn btn-primary" id="sendMsg" type="button">Send message →</button>
+        </div>
+        <div class="contact-card reveal">
+          <div class="info-item"><div class="ic ic-blue">✉️</div><div><h4>Email</h4><p><a href="mailto:support@chatssync.online">support@chatssync.online</a></p></div></div>
+          <div class="info-item"><div class="ic ic-green">💬</div><div><h4>Already a customer?</h4><p>Log in and reach us right from your dashboard.</p></div></div>
+          <div class="info-item"><div class="ic ic-violet">🚀</div><div><h4>Want to try it?</h4><p><a href="https://app.chatssync.online/app/auth/signup">Create a free account</a> and explore.</p></div></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </div></section>
+  </div>
+
 </main>
 
 <footer>
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand" href="#top"><span class="logo">◆</span>Chats<b>Sync</b></a>
+        <div class="brand" data-route="home"><span class="logo">◆</span>Chats<b>Sync</b></div>
         <div class="foot-tag">One shared inbox for WhatsApp and every channel, with a no-code chatbot to handle the routine.</div>
       </div>
       <div class="foot-links">
         <div class="foot-col">
           <h4>Product</h4>
-          <a href="#features">Features</a>
-          <a href="#how">How it works</a>
-          <a href="#why">Why ChatsSync</a>
+          <a data-route="features">Features</a>
+          <a data-route="how">How it works</a>
+          <a data-route="why">Why ChatsSync</a>
         </div>
         <div class="foot-col">
           <h4>Get started</h4>
           <a href="https://app.chatssync.online/app/auth/signup">Create account</a>
           <a href="https://app.chatssync.online/app/login">Log in</a>
+          <a data-route="contact">Contact</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a data-route="privacy">Privacy Policy</a>
+          <a data-route="terms">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -331,22 +515,42 @@
 </footer>
 
 <script>
-  // year
   document.getElementById('yr').textContent = new Date().getFullYear();
-  // mobile menu
+
   var hamb = document.getElementById('hamb'), menu = document.getElementById('mobileMenu');
   hamb.addEventListener('click', function(){
     var open = menu.classList.toggle('open');
     hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); hamb.setAttribute('aria-expanded','false'); }); });
-  // reveal on scroll
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold:.12 });
-    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ io.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+
+  var routes = ['home','features','how','why','privacy','terms','contact'];
+  function showPage(){
+    var h = (location.hash || '').replace('#/','').replace('#','') || 'home';
+    if (routes.indexOf(h) === -1) h = 'home';
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.toggle('active', p.id === 'page-' + h); });
+    document.querySelectorAll('.nav-links [data-route]').forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-route') === h); });
+    var cur = document.getElementById('page-' + h);
+    if (cur) cur.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    window.scrollTo(0, 0);
+    menu.classList.remove('open'); hamb.setAttribute('aria-expanded','false');
   }
+  // any element with data-route navigates
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-route]');
+    if (el){ e.preventDefault(); var r = el.getAttribute('data-route'); location.hash = r === 'home' ? '#/' : '#/' + r; }
+  });
+  window.addEventListener('hashchange', showPage);
+  showPage();
+
+  // contact -> mailto
+  var send = document.getElementById('sendMsg');
+  if (send) send.addEventListener('click', function(){
+    var n = document.getElementById('cname').value || '';
+    var em = document.getElementById('cemail').value || '';
+    var ms = document.getElementById('cmsg').value || '';
+    var body = encodeURIComponent('Name: ' + n + '\nEmail: ' + em + '\n\n' + ms);
+    window.location.href = 'mailto:support@chatssync.online?subject=' + encodeURIComponent('ChatsSync enquiry from ' + n) + '&body=' + body;
+  });
 </script>
 </body>
 </html>
