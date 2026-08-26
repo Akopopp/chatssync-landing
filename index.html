@@ -78,7 +78,6 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
 .nav.scrolled{background:rgba(8,13,24,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-2);padding:12px 0}
 .nav-in{display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:19px;cursor:pointer}
-/* ChatsSync logo mark. To use your image: set .brand-mark background to none and put <img> inside (see note in HTML). */
 .brand-mark{width:40px;height:40px;border-radius:11px;background:#fff;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.3);overflow:hidden;flex-shrink:0}
 .brand-mark img{width:100%;height:100%;object-fit:contain;padding:3px}
 .brand-mark svg{width:24px;height:24px}
@@ -230,6 +229,12 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
 .cta-box .btn-primary{background:#fff;color:var(--blue-2);box-shadow:0 12px 30px rgba(0,0,0,.25)}
 .cta-box .btn-primary:hover{background:#f0f4ff}
 
+/* META BUSINESS DETAILS ADDITIONS IN CTA */
+.cta-footer-info { color: rgba(255,255,255,.7); font-size: 14px; text-align: center; margin-top: 24px; border-top: 1px solid rgba(255,255,255,.1); padding-top: 16px; line-height: 1.6; position: relative; }
+.green-cta .cta-footer-info { color: rgba(4,20,11,.7); border-color: rgba(4,20,11,.1); }
+.cta-footer-info strong { font-weight: 600; color: #fff; }
+.green-cta .cta-footer-info strong { color: #04140b; }
+
 /* AGENCY (both on home teaser + full page) */
 .agency-hero{position:relative;z-index:1;background:linear-gradient(160deg,#0A1220,#0d1a2e);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .agency-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
@@ -255,11 +260,13 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
 
 /* FOOTER */
 .footer{position:relative;z-index:1;padding:70px 0 34px;border-top:1px solid var(--line-2)}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.4fr;gap:40px;margin-bottom:44px}
 .foot-brand p{color:var(--sub);font-size:14px;margin:16px 0;max-width:34ch}
 .foot-col h5{font-family:var(--display);font-size:14px;margin-bottom:16px;color:var(--ink)}
 .foot-col a{display:block;color:var(--sub);font-size:14px;margin-bottom:11px;transition:color .2s;cursor:pointer}
 .foot-col a:hover{color:var(--blue)}
+.business-details span { display: block; color: var(--sub); font-size: 13.5px; margin-bottom: 8px; line-height: 1.5; }
+.business-details strong { color: var(--ink); font-weight: 600; }
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;border-top:1px solid var(--line-2);color:var(--faint);font-size:13.5px}
 .foot-bottom .pw{display:flex;align-items:center;gap:8px}
 .foot-bottom .pw-logo{width:22px;height:22px;border-radius:6px;background:#fff;display:grid;place-items:center;overflow:hidden}
@@ -305,7 +312,6 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
 <nav class="nav" id="nav">
   <div class="wrap nav-in">
     <div class="brand" data-nav="home">
-      <!-- ChatsSync logo. To use YOUR logo image: replace the <svg>…</svg> below with: <img src="chatssync-logo.png" alt="ChatsSync" /> -->
      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#2D6BFF"/><path d="M12 4.2a7.8 7.8 0 0 0-6.7 11.8L4.2 19.8l3.9-1.05A7.8 7.8 0 1 0 12 4.2z" fill="#fff"/><circle cx="9" cy="12" r="1.15" fill="#2D6BFF"/><circle cx="12" cy="12" r="1.15" fill="#2D6BFF"/><circle cx="15" cy="12" r="1.15" fill="#2D6BFF"/></svg></span>
       ChatsSync
     </div>
@@ -405,7 +411,6 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
     <div class="wrap agency-grid">
       <div class="reveal">
         <div class="logo-box">
-          <!-- Growthify logo: replace .ph span with <img src="growthify-logo.png" alt="Growthify Agency" /> -->
           <img src="https://cloudmediastorage.fylestor.com/6270/file-manager/Adobe_Express_-_file.png-1782971623545.jpg" alt="Growthify Agency" />
         </div>
         <span class="eyebrow green">Powered by</span>
@@ -431,6 +436,14 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
           <a href="https://app.chatssync.online" class="btn btn-primary">Start your free trial →</a>
           <a href="mailto:info@chatssync.online" class="btn btn-ghost" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25)">Talk to us</a>
         </div>
+        
+        <!-- Meta Verification Details for CTA Box -->
+        <div class="cta-footer-info">
+          <strong>ChatsSync by Growthify Agency</strong><br>
+          Representative: Abdullah | Faisalabad, Punjab, Pakistan<br>
+          Contact: [Aapka Business Number] | info@chatssync.online
+        </div>
+
       </div>
     </div>
   </section>
@@ -556,7 +569,6 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
     <div class="wrap agency-grid">
       <div class="reveal">
         <div class="logo-box">
-          <!-- Growthify logo here -->
           <img src="https://cloudmediastorage.fylestor.com/6270/file-manager/Adobe_Express_-_file.png-1782971623545.jpg" alt="Growthify Agency" />
         </div>
         <span class="eyebrow green">Built & powered by</span>
@@ -600,6 +612,14 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
           <a href="mailto:info@chatssync.online" class="btn btn-primary">Contact Growthify →</a>
         </div>
+        
+        <!-- Meta Verification Details for Agency CTA Box -->
+        <div class="cta-footer-info">
+          <strong>Growthify Agency</strong><br>
+          Representative: Abdullah | Faisalabad, Punjab, Pakistan<br>
+          Contact: [Aapka Business Number] | info@chatssync.online
+        </div>
+
       </div>
     </div>
   </section>
@@ -684,16 +704,21 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-sp
         <a data-nav="privacy">Privacy Policy</a>
         <a data-nav="terms">Terms of Service</a>
       </div>
-      <div class="foot-col">
-        <h5>Get started</h5>
-        <a href="https://app.chatssync.online">Start free trial</a>
-        <a href="mailto:info@chatssync.online">info@chatssync.online</a>
+      
+      <!-- Meta Verification Business Details Column -->
+      <div class="foot-col business-details">
+        <h5>Business Details</h5>
+        <span><strong>Representative:</strong> Abdullah</span>
+        <span><strong>Address:</strong> 4, street no 8 , amin park,Area,Faisalabad, Punjab, Pakistan</span>
+        <span><strong>Phone:</strong> +923291365941</span>
+        <a href="mailto:info@chatssync.online"><strong>Email:</strong> info@chatssync.online</a>
       </div>
+
     </div>
     <div class="foot-bottom">
       <span>© <span id="yr"></span> ChatsSync. All rights reserved.</span>
       <span class="pw">Powered by
-        <span class="pw-logo"><!-- Growthify small logo: replace .ph with <img src="growthify-logo.png" alt=""/> --><img src="https://cloudmediastorage.fylestor.com/6270/file-manager/Adobe_Express_-_file.png-1782971623545.jpg" alt="Growthify Agency" /></span>
+        <span class="pw-logo"><img src="https://cloudmediastorage.fylestor.com/6270/file-manager/Adobe_Express_-_file.png-1782971623545.jpg" alt="Growthify Agency" /></span>
         <b>Growthify Agency</b>
       </span>
     </div>
