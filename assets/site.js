@@ -132,7 +132,22 @@
     if (!a) return;
     var label = a.getAttribute('data-lead') || 'general';
     var method = a.href.indexOf('tel:') === 0 ? 'phone' : 'whatsapp';
-    try { if (w.gtag) w.gtag('event', 'generate_lead', { method: method, lead_source: label, page_path: location.pathname }); } catch (x) {}
+    // On phones the WhatsApp app takes over instantly and the page can freeze before the
+    // analytics hit leaves, so hold the tap until GA confirms (max 700 ms), then open WhatsApp.
+    var go = null;
+    if (method === 'whatsapp' && !fine && w.gtag && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+      e.preventDefault();
+      var href = a.href, done = false;
+      go = function () { if (done) return; done = true; w.location.href = href; };
+      setTimeout(go, 700);
+    }
+    try {
+      if (w.gtag) {
+        var p = { method: method, lead_source: label, page_path: location.pathname, transport_type: 'beacon' };
+        if (go) p.event_callback = go;
+        w.gtag('event', 'generate_lead', p);
+      }
+    } catch (x) { if (go) go(); }
     try { if (w.fbq) w.fbq('track', 'Contact', { content_name: label }); } catch (x) {}
     try { if (w.clarity) w.clarity('event', method + '_' + label); } catch (x) {}
   });
