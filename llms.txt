@@ -1,0 +1,25 @@
+# ChatsSync
+
+> ChatsSync is a WhatsApp CRM made in Faisalabad, Pakistan. It connects a business phone number to Meta's official WhatsApp Business API (Cloud API) and gives teams a WhatsApp-style shared inbox, a rule-based (not AI) chatbot builder, bulk campaigns with Meta-approved templates, a template builder, contacts with labels, reports and an Android app with instant notifications. Based in Faisalabad, Pakistan; serves businesses in Pakistan and internationally.
+
+## Key facts
+- Website: https://chatssync.online/
+- App login: https://app.chatssync.online/app/login
+- Contact: WhatsApp / phone +92 322 8413450, email info@chatssync.online
+- Location: Faisalabad, Punjab, Pakistan
+- Pricing (PKR): 1 Month Rs 5,000; 3 Months Rs 12,500; 1 Year Rs 40,000. Every plan includes every feature and 1 WhatsApp number; additional numbers cost extra (price depends on needs). Meta's WhatsApp template message fees are separate.
+- Overview video: https://chatssync.online/assets/chatssync-overview.mp4
+- Channels: WhatsApp (official Business API), plus Facebook and Instagram messages in the same inbox.
+- Chatbot: rule-based flows (buttons, lists, questions, media, conditions, hand over to human). Not AI.
+- Suitable for: e-commerce stores, clinics, real estate, salons, restaurants, schools and academies, travel agents, retail and wholesale businesses in Pakistan.
+
+## Pages
+- [Home](https://chatssync.online/): overview, product tour, features, pricing and FAQ
+- [Features](https://chatssync.online/features/): shared inbox, chatbot builder, campaigns, templates, contacts, reports, gallery, comparison with WhatsApp Business app and unofficial tools
+- [Pricing](https://chatssync.online/pricing/): plans in PKR and billing FAQ
+- [WhatsApp Chatbot](https://chatssync.online/whatsapp-chatbot/): rule-based chatbot builder, example flows, FAQ
+- [WhatsApp Bulk Messaging](https://chatssync.online/whatsapp-bulk-messaging/): official bulk campaigns, templates, best practices, FAQ
+- [Use Cases](https://chatssync.online/use-cases/): e-commerce, clinics, real estate, salons, restaurants, education, travel, retail
+- [WhatsApp Business API in Pakistan guide](https://chatssync.online/whatsapp-business-api-pakistan/): requirements, app vs API, templates, 24-hour window, Meta charges
+- [Privacy Policy](https://chatssync.online/privacy/)
+- [Terms of Service](https://chatssync.online/terms/)
