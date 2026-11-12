@@ -6,7 +6,7 @@
 - Website: https://chatssync.online/
 - App login: https://app.chatssync.online/app/login
 - Contact: WhatsApp / phone +92 322 8413450, email info@chatssync.online
-- Location: Faisalabad, Punjab, Pakistan
+- Location: Faisalabad, Pakistan
 - Pricing (PKR, per month): Starter Rs 3,500; Business Rs 5,000; Pro Rs 6,500. 3 months: Rs 8,750 / 12,500 / 16,250. 1 year: Rs 28,000 / 40,000 / 52,000. Plans differ in AI replies, contacts, team members, broadcasts and chatbot flows; each includes 1 WhatsApp number. Add-ons: setup fee Rs 2,000 (one-time), +3,000 AI replies Rs 1,000, extra WhatsApp number Rs 1,500/month, extra team member Rs 500/month. Meta's WhatsApp template message fees are separate.
 - Overview video: https://chatssync.online/assets/chatssync-overview.mp4
 - Channels: WhatsApp (official Business API), plus Facebook and Instagram messages in the same inbox.
