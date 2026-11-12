@@ -405,3 +405,15 @@ th.hl,td.hl{background:rgba(37,99,255,.08)}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .js .rv{opacity:1;transform:none}
 }
+
+/* pricing: billing period switch, plan rows, add-ons */
+.pswitch{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 34px;padding:6px;border-radius:99px;border:1px solid var(--line);width:max-content;max-width:100%;background:rgba(255,255,255,.03)}
+.pswitch-b{font:650 15px var(--font);color:inherit;background:none;border:0;padding:10px 18px;border-radius:99px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.pswitch-b small{font-size:12px;color:#BFF5D3;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);padding:2px 8px;border-radius:99px}
+.pswitch-b[aria-pressed="true"]{background:linear-gradient(90deg,#25D366,#00C2A8);color:#032311}
+.pswitch-b[aria-pressed="true"] small{color:#032311;background:rgba(255,255,255,.35);border-color:transparent}
+.plans[data-period="month"] [data-p]:not([data-p="month"]),.plans[data-period="quarter"] [data-p]:not([data-p="quarter"]),.plans[data-period="year"] [data-p]:not([data-p="year"]){display:none}
+.plan .prows li b{font-weight:800}
+.addons{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:30px auto 0;font-size:14.5px}
+.addons span{padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+@media (max-width:560px){.pswitch{display:grid;grid-template-columns:repeat(3,1fr);width:100%;border-radius:18px;gap:4px}.pswitch-b{flex-direction:column;gap:3px;justify-content:center;padding:9px 4px;font-size:14px;border-radius:14px}.pswitch-b small{font-size:11px;padding:1px 6px}}

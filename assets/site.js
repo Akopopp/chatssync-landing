@@ -152,6 +152,15 @@
     try { if (w.clarity) w.clarity('event', method + '_' + label); } catch (x) {}
   });
 
+  // pricing: 1 Month / 3 Months / 1 Year
+  d.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.pswitch-b');
+    if (!b) return;
+    var box = b.parentNode, plans = box.nextElementSibling;
+    Array.prototype.forEach.call(box.querySelectorAll('.pswitch-b'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    if (plans) plans.setAttribute('data-period', b.getAttribute('data-period'));
+  });
+
   // analytics — loaded after the page is interactive so the site stays fast
   function load(src, cb) { var s = d.createElement('script'); s.async = true; s.src = src; if (cb) s.onload = cb; d.head.appendChild(s); }
   function analytics() {
